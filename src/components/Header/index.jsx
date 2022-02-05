@@ -1,11 +1,25 @@
 import React, { Component } from 'react';
+import {nanoid} from 'nanoid'; //npm i nanoid or yarn add nanoid
 import './index.css';
 
 export default class Header extends Component {
+
+  handleKeyUp = (event)=>{
+    const {keyCode,target} = event
+    if(keyCode !== 13)  return
+    if(target.value.trim() === ''){
+      alert('請輸入代辦事項')
+      return
+    }  
+    const todoObj = {id:nanoid(),name:target.value,done:false}
+    this.props.addTodo(todoObj)
+    target.value = ''
+  }
+
   render() {
     return(
       <div className="todo-header">
-        <input type="text" placeholder="請輸入代辦事項，按Enter確認。"/>
+        <input onKeyUp={this.handleKeyUp} type="text" placeholder="請輸入代辦事項，按Enter確認。"/>
       </div>
     ) 
   }
