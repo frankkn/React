@@ -38,6 +38,15 @@ export default class App extends Component{
     this.setState({todos:newTodos})
   }
 
+  //左下角按鈕:全部完成或全部未完成
+  checkAllTodo = (done)=>{
+    const {todos} = this.state
+    const newTodos = todos.map((todoObj)=>{
+      return {...todoObj,done:done}
+    })
+    this.setState({todos:newTodos})
+  }
+
   render(){
     const {todos} = this.state
     return(
@@ -46,7 +55,7 @@ export default class App extends Component{
           <div className="todo-wrap">
             <Header addTodo={this.addTodo}/>
             <List todos={todos} updateTodo={this.updateTodo} deleteTodo={this.deleteTodo}/>
-            <Footer/>
+            <Footer todos={todos} checkAllTodo={this.checkAllTodo}/>
           </div>
         </div>
       </div>
