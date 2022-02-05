@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import PropsTypes from 'prop-types';//yarn add prop-types
+import PropTypes from 'prop-types';//yarn add prop-types
 import {nanoid} from 'nanoid'; //npm i nanoid or yarn add nanoid
 import './index.css';
 

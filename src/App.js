@@ -28,7 +28,14 @@ export default class App extends Component{
       else return todoObj
     })
     this.setState({todos:newTodos})
+  }
 
+  deleteTodo = (id)=>{
+    const {todos} = this.state
+    const newTodos = todos.filter((todoObj)=>{
+      return todoObj.id !== id
+    })
+    this.setState({todos:newTodos})
   }
 
   render(){
@@ -38,7 +45,7 @@ export default class App extends Component{
         <div className="todo-container">
           <div className="todo-wrap">
             <Header addTodo={this.addTodo}/>
-            <List todos={todos} updateTodo={this.updateTodo}/>
+            <List todos={todos} updateTodo={this.updateTodo} deleteTodo={this.deleteTodo}/>
             <Footer/>
           </div>
         </div>
